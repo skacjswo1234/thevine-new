@@ -57,13 +57,27 @@
             align-items: center;
             justify-content: center;
             position: relative;
+            box-sizing: border-box;
         }
 
         .logo {
             height: 50px;
             width: auto;
-            position: absolute;
-            left: 20px;
+        }
+
+        /* PC 화면에서만 로고 위치 고정 */
+        @media (min-width: 769px) {
+            header {
+                padding: 20px 0;
+            }
+
+            .logo {
+                position: absolute;
+                left: 400px !important;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+            }
         }
 
         .nav-menu {
@@ -163,10 +177,14 @@
         @media (max-width: 768px) {
             header {
                 justify-content: space-between;
+                padding: 20px;
             }
 
             .logo {
-                position: static;
+                position: static !important;
+                left: auto !important;
+                top: auto !important;
+                transform: none !important;
             }
 
             .nav-menu {
