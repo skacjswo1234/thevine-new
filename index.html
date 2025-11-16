@@ -429,6 +429,51 @@
             }
         }
 
+        /* 하단 긴 투명 버튼 */
+        .bottom-wide-button {
+            position: absolute;
+            bottom: 2%;
+            left: 45%;
+            transform: translateX(-50%);
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .bottom-wide-btn {
+            background-color: transparent;
+            border: 2px solid transparent;
+            color: transparent;
+            padding: 30px 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            pointer-events: auto;
+        }
+
+        .bottom-wide-btn:hover {
+            background-color: transparent;
+            border-color: transparent;
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .bottom-wide-button {
+                bottom: 1%;
+                left: 42%;
+            }
+            .bottom-wide-btn {
+                padding: 20px 1px;
+                font-size: 5px;
+            }
+        }
+
         html {
             scroll-behavior: smooth;
         }
@@ -642,10 +687,15 @@
                     <a href="https://forms.gle/AtX37vYZeL1iw5UA8" target="_blank" class="faq-btn">버튼</a>
                 </div>
             </section>
-            <picture>
-                <source media="(max-width: 768px)" srcset="images/h-9-m.png">
-                <img src="images/h-9.png" alt="h-9">
-            </picture>
+            <section class="image-section" id="bottom-image">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/h-9-m.png">
+                    <img src="images/h-9.png" alt="h-9">
+                </picture>
+                <div class="bottom-wide-button">
+                    <a href="https://blog.naver.com/thevine_official" target="_blank" class="bottom-wide-btn" aria-label="더바인 공식 블로그로 이동">블로그 이동</a>
+                </div>
+            </section>
         </div>
     </div>
 
