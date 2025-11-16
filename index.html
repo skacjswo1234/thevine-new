@@ -44,6 +44,54 @@
             box-sizing: border-box;
         }
 
+        /* 하단 긴 투명 버튼 (h-9 섹션) */
+        .bottom-wide-button {
+            position: absolute;
+            bottom: 2%;
+            left: 45%;
+            transform: translateX(-50%);
+            z-index: 10;
+            pointer-events: auto;
+            display: flex;
+            gap: 20px;
+        }
+
+        .bottom-wide-btn {
+            background-color: transparent;
+            border: 2px solid transparent;
+            color: transparent;
+            padding: 28px 1px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            pointer-events: auto;
+        }
+
+        .bottom-wide-btn:hover {
+            background-color: transparent;
+            border-color: transparent;
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .bottom-wide-button {
+                bottom: 1%;
+                left: 42%;
+                gap: 8px;
+            }
+            .bottom-wide-btn {
+                padding: 20px 1px;
+                font-size: 6px;
+            }
+        }
+
         body {
             font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
             background-color: #f5f5f5;
@@ -429,51 +477,6 @@
             }
         }
 
-        /* 하단 긴 투명 버튼 */
-        .bottom-wide-button {
-            position: absolute;
-            bottom: 2%;
-            left: 45%;
-            transform: translateX(-50%);
-            z-index: 10;
-            pointer-events: auto;
-        }
-
-        .bottom-wide-btn {
-            background-color: transparent;
-            border: 2px solid transparent;
-            color: transparent;
-            padding: 30px 10px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
-            border-radius: 5px;
-            text-decoration: none;
-            display: inline-block;
-            text-align: center;
-            pointer-events: auto;
-        }
-
-        .bottom-wide-btn:hover {
-            background-color: transparent;
-            border-color: transparent;
-            transform: none;
-            box-shadow: none;
-        }
-
-        @media (max-width: 768px) {
-            .bottom-wide-button {
-                bottom: 1%;
-                left: 42%;
-            }
-            .bottom-wide-btn {
-                padding: 20px 1px;
-                font-size: 5px;
-            }
-        }
-
         html {
             scroll-behavior: smooth;
         }
@@ -524,6 +527,80 @@
             }
         }
 
+        /* 하단 긴 투명 버튼 */
+        .bottom-wide-button {
+            position: absolute;
+            bottom: 2%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .bottom-wide-btn {
+            background-color: transparent;
+            border: 2px solid transparent;
+            color: transparent;
+            padding: 28px 1px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            pointer-events: auto;
+        }
+
+        .bottom-wide-btn:hover {
+            background-color: transparent;
+            border-color: transparent;
+            transform: none;
+            box-shadow: none;
+        }
+
+        @media (max-width: 768px) {
+            .bottom-wide-button {
+                bottom: 1%;
+                left: 50%;
+            }
+            .bottom-wide-btn {
+                padding: 20px 1px;
+                font-size: 6px;
+            }
+        }
+
+        /* h-9 상단 중앙 투명 버튼 */
+        .h9-top-button {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            pointer-events: auto;
+        }
+
+        .h9-top-btn {
+            background-color: transparent;
+            border: 2px solid transparent;
+            color: transparent;
+            padding: 28px 140px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .h9-top-button {
+                top: 8%;
+            }
+            .h9-top-btn {
+                padding: 10px 0px;
+            }
+        }
         /* Notice Modal */
         .notice-overlay {
             position: fixed;
@@ -601,7 +678,7 @@
             </button>
         </div>
     </header>
-
+    
     <!-- Notice Modal -->
     <div class="notice-overlay" id="noticeOverlay" role="dialog" aria-modal="true" aria-label="공지 팝업">
         <div class="notice-modal">
@@ -688,14 +765,20 @@
                 </div>
             </section>
             <section class="image-section" id="bottom-image">
+            <section class="image-section" id="bottom-image">
                 <picture>
                     <source media="(max-width: 768px)" srcset="images/h-9-m.png">
                     <img src="images/h-9.png" alt="h-9">
                 </picture>
+                <div class="h9-top-button">
+                    <a href="https://blog.naver.com/thevine_official" target="_blank" class="h9-top-btn" aria-label="더바인 공식 블로그로 이동">블로그 이동</a>
+                </div>
                 <div class="bottom-wide-button">
                     <a href="https://blog.naver.com/thevine_official" target="_blank" class="bottom-wide-btn" aria-label="더바인 공식 블로그로 이동">블로그 이동</a>
+                    <a href="https://www.linkedin.com/in/thevinemba" target="_blank" class="bottom-wide-btn" aria-label="더바인 LinkedIn 프로필로 이동">LinkedIn</a>
+                    <a href="https://medium.com/@0923jacobsally" target="_blank" class="bottom-wide-btn" aria-label="더바인 Medium 프로필로 이동">Medium</a>
                 </div>
-            </section>
+          
         </div>
     </div>
 
@@ -822,8 +905,7 @@
             }
         });
 
-        // 새로고침/재방문 시마다 표시 (PC/모바일 동일)
-        // 이미지 로드 타이밍 고려해 약간의 지연 후 표시
+        // 새로고침/재방문 시마다 표시
         setTimeout(openNotice, 400);
     </script>
 </body>
