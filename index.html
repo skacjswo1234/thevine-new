@@ -479,6 +479,59 @@
             }
         }
 
+        /* Notice Modal */
+        .notice-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+        }
+
+        .notice-overlay.active {
+            display: flex;
+        }
+
+        .notice-modal {
+            position: relative;
+            max-width: 720px;
+            width: 100%;
+            transform: translateZ(0);
+        }
+
+        .notice-modal img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .notice-close-zone {
+            position: absolute;
+            left: 50%;
+            bottom: 7%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 64px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .notice-modal {
+                max-width: 92vw;
+            }
+            .notice-close-zone {
+                width: 70%;
+                height: 56px;
+                bottom: 6%;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -503,6 +556,14 @@
             </button>
         </div>
     </header>
+
+    <!-- Notice Modal -->
+    <div class="notice-overlay" id="noticeOverlay" role="dialog" aria-modal="true" aria-label="공지 팝업">
+        <div class="notice-modal">
+            <img src="images/pop.png" alt="NOTICE 공지 이미지">
+            <button class="notice-close-zone" id="noticeClose" aria-label="공지 닫기 버튼"></button>
+        </div>
+    </div>
     
     <div class="menu-overlay" id="menuOverlay"></div>
     
@@ -673,6 +734,47 @@
                 behavior: 'smooth'
             });
         });
+
+        // Notice Modal
+        const noticeOverlay = document.getElementById('noticeOverlay');
+        const noticeClose = document.getElementById('noticeClose');
+
+        function openNotice() {
+            if (!noticeOverlay) return;
+            noticeOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeNotice() {
+            if (!noticeOverlay) return;
+            noticeOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // 오버레이 배경 클릭 시 닫기
+        if (noticeOverlay) {
+            noticeOverlay.addEventListener('click', function(e) {
+                if (e.target === noticeOverlay) {
+                    closeNotice();
+                }
+            });
+        }
+
+        // 버튼 클릭 시 닫기
+        if (noticeClose) {
+            noticeClose.addEventListener('click', closeNotice);
+        }
+
+        // ESC로 닫기
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && noticeOverlay && noticeOverlay.classList.contains('active')) {
+                closeNotice();
+            }
+        });
+
+        // 새로고침/재방문 시마다 표시 (PC/모바일 동일)
+        // 이미지 로드 타이밍 고려해 약간의 지연 후 표시
+        setTimeout(openNotice, 400);
     </script>
 </body>
 </html>
