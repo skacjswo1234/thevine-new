@@ -98,10 +98,13 @@
         }
 
         header {
+            position: sticky;
+            top: 0;
             background-color: #2e0b68;
             width: 100%;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
+            z-index: 9999;
         }
 
         .header-inner {
@@ -129,6 +132,7 @@
                 margin-left: 60px;
             }
         }
+
 
         .nav-menu {
             display: flex;
@@ -906,7 +910,7 @@
         });
 
         // 새로고침/재방문 시마다 표시
-        setTimeout(openNotice, 400);
+        setTimeout(openNotice, 3000);
     </script>
 </body>
 </html>
