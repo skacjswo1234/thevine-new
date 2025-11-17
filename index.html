@@ -50,7 +50,7 @@
             bottom: 2%;
             left: 45%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
             display: flex;
             gap: 20px;
@@ -95,13 +95,31 @@
         body {
             font-family: "맑은 고딕", "Malgun Gothic", Arial, sans-serif;
             background-color: #f5f5f5;
+            position: relative;
+            padding-top: 70px; /* 헤더 높이만큼 여백 */
+        }
+        
+        /* 첫 번째 이미지 섹션이 헤더 바로 아래 오도록 */
+        .content > .image-container > .image-section:first-child {
+            margin-top: -70px; /* body padding-top만큼 올려서 헤더 바로 아래 배치 */
+        }
+        
+        @media (max-width: 768px) {
+            .content > .image-container > .image-section:first-child {
+                margin-top: -60px; /* 모바일 헤더 높이만큼 */
+            }
         }
 
+        /* 헤더 - 고정 헤더 설정 */
         header {
-            background-color: #2e0b68;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
+            background-color: #2e0b68;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
+            z-index: 9999;
         }
 
         .header-inner {
@@ -225,6 +243,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 60px; /* 모바일 헤더 높이만큼 여백 */
+            }
+            
             .header-inner {
                 padding: 14px 16px;
             }
@@ -264,12 +286,24 @@
         .image-section {
             position: relative;
             width: 100%;
+            z-index: -1 !important;
+            isolation: isolate;
         }
 
         .image-section picture {
             position: relative;
-            z-index: 1;
+            z-index: -1 !important;
             pointer-events: none;
+        }
+        
+        .image-container {
+            z-index: -1 !important;
+        }
+        
+        .image-container img,
+        .image-container picture,
+        .image-container picture img {
+            z-index: -1 !important;
         }
 
         .image-section picture img {
@@ -283,7 +317,7 @@
             transform: translate(-50%, -50%);
             display: flex;
             gap: 25px;
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
         }
 
@@ -328,7 +362,7 @@
             position: absolute;
             top: 33%;
             left: 28%;
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
         }
 
@@ -374,7 +408,7 @@
             top: 47%;
             left: 61%;
             transform: translate(-50%, -50%);
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
         }
 
@@ -383,7 +417,7 @@
             bottom: 1%;
             left: 61%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
         }
 
@@ -434,7 +468,7 @@
             bottom: 2%;
             left: 61%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
             display: flex;
             gap: 60px;
@@ -479,6 +513,13 @@
 
         html {
             scroll-behavior: smooth;
+            height: auto;
+            overflow-y: scroll;
+        }
+        
+        html, body {
+            position: relative;
+            height: auto;
         }
 
         .top-button {
@@ -578,7 +619,7 @@
             top: 10%;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
         }
 
@@ -654,6 +695,24 @@
             }
         }
 
+    </style>
+    <style>
+        /* 이미지 섹션은 헤더보다 낮은 z-index */
+        .image-section,
+        .image-container,
+        .image-section picture,
+        .image-section img,
+        .image-section picture img {
+            z-index: 0;
+            position: relative;
+        }
+        
+        /* 이미지 버튼들은 헤더보다 낮게 */
+        .image-buttons,
+        .bottom-wide-button,
+        .h9-top-button {
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -905,8 +964,8 @@
             }
         });
 
-        // 새로고침/재방문 시마다 표시
-        setTimeout(openNotice, 400);
+        // 새로고침/재방문 시마다 표시 (2초 지연)
+        setTimeout(openNotice, 2000);
     </script>
 </body>
 </html>
