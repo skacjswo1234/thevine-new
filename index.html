@@ -50,7 +50,7 @@
             bottom: 2%;
             left: 45%;
             transform: translateX(-50%);
-            z-index: 10;
+            z-index: 1;
             pointer-events: auto;
             display: flex;
             gap: 20px;
@@ -97,11 +97,12 @@
             background-color: #f5f5f5;
         }
 
+        /* 헤더 - 고정 헤더 설정 */
         header {
             position: sticky;
             top: 0;
-            background-color: #2e0b68;
             width: 100%;
+            background-color: #2e0b68;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             box-sizing: border-box;
             z-index: 9999;
@@ -268,16 +269,18 @@
         .image-section {
             position: relative;
             width: 100%;
+            z-index: 1;
         }
 
         .image-section picture {
-            position: relative;
-            z-index: 1;
-            pointer-events: none;
+            width: 100%;
+            display: block;
         }
 
-        .image-section picture img {
-            pointer-events: none;
+        .image-section img {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .image-buttons {
@@ -483,6 +486,13 @@
 
         html {
             scroll-behavior: smooth;
+            height: auto;
+            overflow-y: scroll;
+        }
+        
+        html, body {
+            position: relative;
+            height: auto;
         }
 
         .top-button {
@@ -909,7 +919,7 @@
             }
         });
 
-        // 새로고침/재방문 시마다 표시
+        // 새로고침/재방문 시마다 표시 (3초 지연)
         setTimeout(openNotice, 3000);
     </script>
 </body>
